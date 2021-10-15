@@ -72,6 +72,24 @@ namespace Validator
             }
         }
 
+        public static int GetInt(int numOfDigits)
+        {
+            while (true)
+            {
+                int result = GetInt();
+                int count = result.ToString().Trim().Length;
+
+                if (count > numOfDigits)
+                {
+                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits} digits.");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
         public static bool Repeat()
         {
             while (true)
