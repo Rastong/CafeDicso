@@ -72,6 +72,24 @@ namespace Validator
             }
         }
 
+        public static int GetInt(int numOfDigits)
+        {
+            while (true)
+            {
+                int result = GetInt();
+                int count = result.ToString().Trim().Length;
+
+                if (count > numOfDigits)
+                {
+                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits} digits.");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
         public static bool Repeat()
         {
             while (true)
@@ -148,6 +166,81 @@ namespace Validator
                 else
                 {
                     return result;
+                }
+            }
+        }
+
+        public static int GetCheckNumber(int numOfDigits)
+        {
+            while (true)
+            {
+                int result = GetCheckNumber();
+                int count = result.ToString().Trim().Length;
+
+                if (count > numOfDigits + 2 || count < numOfDigits)
+                {
+                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits}-{numOfDigits + 2} digits.");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
+        public static int GetCheckNumber()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Please enter the check number");
+                    int result = int.Parse(Console.ReadLine());
+                    return result;
+                }
+                catch (FormatException e)
+                {
+                    Console.Write("That was not a number. Enter an integer: ");
+                }
+            }
+        }
+
+        public static long GetCardNumber(int numOfDigits)
+        {
+            while (true)
+            {
+                long result = GetCardNumber();
+                long count = result.ToString().Trim().Length;
+
+                if (count != numOfDigits)
+                {
+                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits} digits.");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
+        public static long GetCardNumber()
+        {
+            long cardNum = 0;
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Please enter the card number. ####-####-####-####");
+                    string input = Console.ReadLine();
+                    input = input.Replace("-", string.Empty);
+                    Console.WriteLine(input);
+                    cardNum = long.Parse(input);
+                    return cardNum;
+
+                }
+                catch (FormatException e)
+                {
+                    Console.Write("That was not a number. Enter an integer: ");
                 }
             }
         }
