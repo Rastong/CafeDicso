@@ -17,7 +17,7 @@ namespace CafeDisco
                 Console.WriteLine($"{i + 1}. {menuItems.MainMenu[i]}");
             }
            
-            int mainChoice = Validator.Validator.GetInt(1, 2);
+            int mainChoice = Validator.Validator.GetInt(0, 2);
             return mainChoice;
         }
         public static int AddOrRemove(Menu menuItems)

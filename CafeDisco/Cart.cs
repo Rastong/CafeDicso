@@ -29,8 +29,8 @@ namespace CafeDisco
             {
                 customerCart.Add(cafeMenu.FoodMenu[itemChoice - 1]);
                 Console.WriteLine($"You have added {cafeMenu.FoodMenu[itemChoice - 1].Name} to your cart for ${cafeMenu.FoodMenu[itemChoice - 1].Price}");
-            }      
-        }
+            }                         
+        }                  
 
         //remove menu item from cart
         public void RemoveFromCart()

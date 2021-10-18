@@ -43,10 +43,6 @@ namespace CafeDisco
                 ("Add or remove from cart"),
                 ("Checkout")
             };
-        }
-       
-
-
-
+        }      
     }
 }
