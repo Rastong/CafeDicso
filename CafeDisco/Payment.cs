@@ -14,7 +14,7 @@ namespace CafeDisco
         }
 
         //Methods
-        public static void PayWithCard(double total)
+        public void PayWithCard()
         {
             Console.WriteLine("Please enter the card number. ####-####-####-####");
             long cardNum = Validator.Validator.GetCardNumber(16);
@@ -22,16 +22,16 @@ namespace CafeDisco
             int ExpirationDate = Validator.Validator.GetExpirationDate(8);
             Console.WriteLine("Pleae enter the security number. ###");
             int CVV = Validator.Validator.GetInt(3);
-            Console.WriteLine($"A total of ${total} has been charged to your account.");
+            Console.WriteLine($"A total of ${Total} has been charged to your account.");
         }
-        public static void PayWithCheck(double total)
+        public void PayWithCheck()
         {
             Console.WriteLine("Please enter the check number. ###");
             int checkNumber = Validator.Validator.GetInt(3);
-            Console.WriteLine($"Thank you for the check {checkNumber} and total of ${total}.");
+            Console.WriteLine($"Thank you for the check {checkNumber} and total of ${Total}.");
         }
 
-        public static void PaymentWithCash(double total)
+        public void PaymentWithCash()
 
         {
             try
@@ -39,11 +39,11 @@ namespace CafeDisco
                 bool Repeat = true;
                 while (Repeat)
                 {
-                    Console.WriteLine($"For a total of ${total}, how much cash will you be giving today?");
+                    Console.WriteLine($"For a total of ${Total}, how much cash will you be giving today?");
                     double cashGivin = double.Parse(Console.ReadLine());
-                    if (cashGivin >= total)
+                    if (cashGivin >= Total)
                     {
-                        double change = cashGivin - total;
+                        double change = cashGivin - Total;
                         Console.WriteLine($"Your change back is ${change}.");
                         Repeat = false;
                     }
@@ -60,45 +60,45 @@ namespace CafeDisco
         }
 
         //Finds out how they want to pay
-        public static string ToPay(double total)
+        public string ToPay()
         {
             string PaymentType = "";
             bool ValidPaymentOption = true;
             while (ValidPaymentOption)
             {
                 //|Makes sure that it is a valid option| Makes sure they write something|
-                PaymentType = GetString(total);
-                ValidPaymentOption = WhichPayment(PaymentType, total);
+                PaymentType = GetString();
+                ValidPaymentOption = WhichPayment(PaymentType);
             }
             return PaymentType;
         }
 
         //Checks to make sure nothing isnt typed in
-        public static string GetString(double total)
+        public string GetString()
         {
 
-            Console.WriteLine($"Your total today is ${total}. Will you be paying with Cash, Card, or Check?");
+            Console.WriteLine($"Your total today is ${Total}. Will you be paying with Cash, Card, or Check?");
             return Validator.Validator.GetString();
 
         }
 
         //Reference back to payment class to the paying option
-        public static bool WhichPayment(string payment, double total)
+        public bool WhichPayment(string payment)
         {
             bool result = true;
             if (payment == "cash")
             {
-                CafeDisco.Payment.PaymentWithCash(total);
+                PaymentWithCash();
                 result = false;
             }
             else if (payment == "card")
             {
-                CafeDisco.Payment.PayWithCard(total);
+                PayWithCard();
                 result = false;
             }
             else if (payment == "check")
             {
-                CafeDisco.Payment.PayWithCheck(total);
+                PayWithCheck();
                 result = false;
 
             }
