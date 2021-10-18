@@ -70,6 +70,23 @@ namespace Validator
             }
         }
 
+        public static int GetInt(int min, int max, int escapeProgram, int editMenu)
+        {
+            while (true)
+            {
+                int result = GetInt();
+
+                if (result < min || result > max || result != escapeProgram || result != editMenu)
+                {
+                    Console.Write($"\nThis number is out of range. Please enter a number from {min} to {max}: ");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
         public static int GetInt(int numOfDigits)
         {
             while (true)

@@ -7,6 +7,7 @@ namespace CafeDisco
         static void Main(string[] args)
         {
             Menu menu = new Menu();
+            Cart myCart = new Cart();
             Console.WriteLine("Welcome to Cafe Disco! Here is our menu.");
             Console.WriteLine("DRINKS");
             menu.DrinkMenu.ForEach(item => Console.WriteLine($"{item}"));
@@ -28,21 +29,43 @@ namespace CafeDisco
                         //food/drink choice
                         int foodOrDrink = Options.GetFoodOrDrink();
                         int itemChoice = Options.GetItem(foodOrDrink, menu);
-                        //AddToCart(foodOrDrink, itemChoice)
+                        myCart.AddToCart(foodOrDrink, itemChoice);
                     }
                     else
                     {
-                        //RemoveFromCart();
+                        myCart.RemoveFromCart();
                     }
+
+                    Console.Write("Press any key to continue: ");
+                    Console.ReadKey();
+
+                    Console.Clear();
+
+                    Console.WriteLine("\nThanks! Would you like to: ");
                 }
 
                 else if (mainChoice == 2)
                 {
-                    //PrintCart();
-                    Console.WriteLine("Thank you for shopping at Cafe Disco.\n Your total is: ");
-                    //int total = "$" + GetTotal();
-                    //ToPay(total);
+
+                    Console.Clear();
+                    myCart.PrintCart();
+                    Console.WriteLine($"\nThank you for shopping at Cafe Disco." + 
+                        $"{"\nSubtotal: ",-35} ${myCart.GetSubTotal():0.00}" + 
+                        $"{"\nTax: ",-35} ${myCart.GetTax():0.00}" + 
+                        $"{"\nGrand Total: ",-35} ${myCart.GrandTotal():0.00}");
                     break;
+                }
+
+                else if (mainChoice == 3)
+                {
+                    Console.Clear();
+                    myCart.PrintCart();
+                    Console.WriteLine($"{"Your cart subtotal is", -35} ${myCart.GetSubTotal():0.00}");
+                }
+
+                else if (mainChoice == 99)
+                {
+                    menu.AddOrRemove();
                 }
             }
         }
