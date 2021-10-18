@@ -20,7 +20,6 @@ namespace CafeDisco
 
                 if (mainChoice == 1)
                 {
-                    bool addMore = true;
                     int addRemove = Options.AddOrRemove(menu);
 
 
@@ -41,7 +40,7 @@ namespace CafeDisco
                 {
                     //PrintCart();
                     Console.WriteLine("Thank you for shopping at Cafe Disco.\n Your total is: ");
-                    //int total = GetTotal();
+                    //int total = "$" + GetTotal();
                     //ToPay(total);
                     break;
                 }
