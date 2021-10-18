@@ -76,7 +76,7 @@ namespace Validator
             {
                 int result = GetInt();
 
-                if (result < min || result > max || result != escapeProgram || result != editMenu)
+                if ((result < min || result > max) &&  (result != escapeProgram && result != editMenu))
                 {
                     Console.Write($"\nThis number is out of range. Please enter a number from {min} to {max}: ");
                 }
