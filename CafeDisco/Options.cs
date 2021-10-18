@@ -16,7 +16,7 @@ namespace CafeDisco
             {
                 Console.WriteLine($"{i + 1}. {menuItems.MainMenu[i]}");
             }
-           
+
             int mainChoice = Validator.Validator.GetInt(1, menuItems.MainMenu.Count, 96, 99);
 
             return mainChoice;
