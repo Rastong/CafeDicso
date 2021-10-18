@@ -7,6 +7,10 @@ namespace CafeDisco
         static void Main(string[] args)
         {
             Menu menu = new Menu();
+
+            bool newCustomerOrder = true;
+            while (newCustomerOrder == true)
+
             Cart myCart = new Cart();
             Console.WriteLine("Welcome to Cafe Disco! Here is our menu.");
             Console.WriteLine("DRINKS");
@@ -15,33 +19,50 @@ namespace CafeDisco
             menu.FoodMenu.ForEach(item => Console.WriteLine($"{item}"));       
             while (true)
             {
-                //get main menu choice
-                int mainChoice = Options.GetMainChoice();
-                //add/remove choice
-
-                if (mainChoice == 1)
+                Console.WriteLine("Welcome to Cafe Disco! Here is our menu.");
+                Console.WriteLine("DRINKS");
+                menu.DrinkMenu.ForEach(item => Console.WriteLine($"{item}"));
+                Console.WriteLine("\nFOOD");
+                menu.FoodMenu.ForEach(item => Console.WriteLine($"{item}"));
+                while (true)
                 {
-                    int addRemove = Options.AddOrRemove(menu);
 
+                    //get main menu choice
+                    int mainChoice = Options.GetMainChoice();
+                    //add/remove choice
 
-                    if (addRemove == 1)
+                    if (mainChoice == 1)
                     {
-                        //food/drink choice
-                        int foodOrDrink = Options.GetFoodOrDrink();
-                        int itemChoice = Options.GetItem(foodOrDrink, menu);
-                        myCart.AddToCart(foodOrDrink, itemChoice);
+                        int addRemove = Options.AddOrRemove(menu);
+
+                        if (addRemove == 1)
+                        {
+                            //food/drink choice
+                          int foodOrDrink = Options.GetFoodOrDrink();
+                          int itemChoice = Options.GetItem(foodOrDrink, menu);
+                          myCart.AddToCart(foodOrDrink, itemChoice);
+                        }
+                      else
+                      {
+                          myCart.RemoveFromCart();
+                      }
+
+                      Console.Write("Press any key to continue: ");
+                      Console.ReadKey();
+
+                      Console.Clear();
+
+                      Console.WriteLine("\nThanks! Would you like to: ");
                     }
-                    else
+                     
+
+                    //secret option for admin to close software
+                    else if (mainChoice == 96)
                     {
-                        myCart.RemoveFromCart();
+                        Console.WriteLine("Shutting down PoS terminal. Great job today serving all of these grateful customers.");
+                        Environment.Exit(0);
                     }
-
-                    Console.Write("Press any key to continue: ");
-                    Console.ReadKey();
-
-                    Console.Clear();
-
-                    Console.WriteLine("\nThanks! Would you like to: ");
+                        
                 }
 
                 else if (mainChoice == 2)

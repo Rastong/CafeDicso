@@ -24,7 +24,6 @@ namespace CafeDisco
             int CVV = Validator.Validator.GetInt(3);
             Console.WriteLine($"A total of ${total} has been charged to your account.");
         }
-
         public static void PayWithCheck(double total)
         {
             Console.WriteLine("Please enter the check number. ###");
@@ -33,6 +32,7 @@ namespace CafeDisco
         }
 
         public static void PaymentWithCash(double total)
+
         {
             try
             {
