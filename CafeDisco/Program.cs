@@ -5,20 +5,7 @@ namespace CafeDisco
 {
     class Program
     {
-        List<Item> menu = new List<Item>();
-        static void Main(string[] args)
-        {
-            /*
-            Console.WriteLine("Hello World!");
-            Payment.PaymentWithCash(30);
-            Payment.PayWithCheck(60);
-            Payment.PayWithCard(60);
-            */
-            
-            // Start of Payment
-            string PaymentType = Payment.ToPay(60);
-            Console.WriteLine(PaymentType);
-        }
+        
 
     }
 }
