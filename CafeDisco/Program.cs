@@ -16,7 +16,8 @@ namespace CafeDisco
             */
             
             // Start of Payment
-            Payment.ToPay(60);
+            string PaymentType = Payment.ToPay(60);
+            Console.WriteLine(PaymentType);
         }
 
     }

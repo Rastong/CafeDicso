@@ -60,14 +60,17 @@ namespace CafeDisco
         }
 
         //Finds out how they want to pay
-        public static void ToPay(double total)
+        public static string ToPay(double total)
         {
+            string PaymentType = "";
             bool ValidPaymentOption = true;
             while (ValidPaymentOption)
             {
-               //                   |Makes sure that it is a valid option| Makes sure they write something|
-                ValidPaymentOption = Validator.Validator.WhichPayment(Validator.Validator.GetString(total), total);
+                //                   |Makes sure that it is a valid option| Makes sure they write something|
+                PaymentType = Validator.Validator.GetString(total);
+                ValidPaymentOption = Validator.Validator.WhichPayment(PaymentType, total);
             }
+            return PaymentType;
         }
     }
 }
