@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CafeDisco
-{ 
+{
     class Payment
     {
         //Properties
@@ -18,42 +16,46 @@ namespace CafeDisco
         //Methods
         public static void PayWithCard(double total)
         {
+            Console.WriteLine("Please enter the card number. ####-####-####-####");
             long cardNum = Validator.Validator.GetCardNumber(16);
+            Console.WriteLine("Please enter the expirtaion date. ##/##/####");
             int ExpirationDate = Validator.Validator.GetExpirationDate(8);
-            int CVV = Validator.Validator.GetCVV(3);
+            Console.WriteLine("Pleae enter the security number. ###");
+            int CVV = Validator.Validator.GetInt(3);
             Console.WriteLine($"A total of ${total} has been charged to your account.");
         }
         public static void PayWithCheck(double total)
         {
-            int checkNumber = Validator.Validator.GetCheckNumber(3);
+            Console.WriteLine("Please enter the check number. ###");
+            int checkNumber = Validator.Validator.GetInt(3);
             Console.WriteLine($"Thank you for the check {checkNumber} and total of ${total}.");
         }
-        public static double PaymentWithCash(double total)
+
+        public static void PaymentWithCash(double total)
+
         {
-            while (true)
+            try
             {
-                double cashGivin = 0;
-                try
+                bool Repeat = true;
+                while (Repeat)
                 {
-                    while (true)
+                    Console.WriteLine($"For a total of ${total}, how much cash will you be giving today?");
+                    double cashGivin = double.Parse(Console.ReadLine());
+                    if (cashGivin >= total)
                     {
-                        Console.WriteLine($"For a total of ${total}, how much cash will you be giving today?");
-                        cashGivin += double.Parse(Console.ReadLine());
-                        if (cashGivin >= total)
-                        {
-                            double change = cashGivin - total;
-                            return change;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Oops, You have only givin me ${cashGivin} out of ${total}. You still owe another {total - cashGivin} dollars");
-                        }
+                        double change = cashGivin - total;
+                        Console.WriteLine($"Your change back is ${change}.");
+                        Repeat = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Oops, You have not given me enough. Please try again");
                     }
                 }
-                catch (FormatException e)
-                {
-                    Console.Write("That was not a number. Enter a number. ");
-                }
+            }
+            catch (FormatException e)
+            {
+                Console.Write("That was not a number. Enter a number. ");
             }
         }
 
@@ -64,11 +66,48 @@ namespace CafeDisco
             bool ValidPaymentOption = true;
             while (ValidPaymentOption)
             {
-                //                   |Makes sure that it is a valid option| Makes sure they write something|
-                PaymentType = Validator.Validator.GetString(total);
-                ValidPaymentOption = Validator.Validator.WhichPayment(PaymentType, total);
+                //|Makes sure that it is a valid option| Makes sure they write something|
+                PaymentType = GetString(total);
+                ValidPaymentOption = WhichPayment(PaymentType, total);
             }
             return PaymentType;
         }
+
+        //Checks to make sure nothing isnt typed in
+        public static string GetString(double total)
+        {
+
+            Console.WriteLine($"Your total today is ${total}. Will you be paying with Cash, Card, or Check?");
+            return Validator.Validator.GetString();
+
+        }
+
+        //Reference back to payment class to the paying option
+        public static bool WhichPayment(string payment, double total)
+        {
+            bool result = true;
+            if (payment == "cash")
+            {
+                CafeDisco.Payment.PaymentWithCash(total);
+                result = false;
+            }
+            else if (payment == "card")
+            {
+                CafeDisco.Payment.PayWithCard(total);
+                result = false;
+            }
+            else if (payment == "check")
+            {
+                CafeDisco.Payment.PayWithCheck(total);
+                result = false;
+
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid input. Try again.\n");
+            }
+            return result;
+        }
+
     }
 }

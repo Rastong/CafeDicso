@@ -17,7 +17,8 @@ namespace CafeDisco
                 Console.WriteLine($"{i + 1}. {menuItems.MainMenu[i]}");
             }
            
-            int mainChoice = Validator.Validator.GetInt(0, 2);
+            int mainChoice = Validator.Validator.GetInt(1, menuItems.MainMenu.Count, 96, 99);
+
             return mainChoice;
         }
         public static int AddOrRemove(Menu menuItems)
@@ -42,8 +43,6 @@ namespace CafeDisco
                 Console.WriteLine("What drinks would you like to add to your cart?");
                 GetBeverageMenu(menuItems.DrinkMenu);
                 itemChoice = GetChoice(menuItems.DrinkMenu);
-
-                //AddToCart(mainChoice, bevvyChoice);
             }
             //foodMenu
             else if (foodOrDrink == 2)
@@ -51,8 +50,6 @@ namespace CafeDisco
                 Console.WriteLine("Which food items would you like to add to your cart?");
                 GetFoodMenu(menuItems.FoodMenu);
                 itemChoice = GetChoice(menuItems.FoodMenu);
-
-                //AddToCart(mainChoice, foodChoice);
             }
             return itemChoice;
         }

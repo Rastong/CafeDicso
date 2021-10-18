@@ -70,6 +70,23 @@ namespace Validator
             }
         }
 
+        public static int GetInt(int min, int max, int escapeProgram, int editMenu)
+        {
+            while (true)
+            {
+                int result = GetInt();
+
+                if (result < min || result > max || result != escapeProgram || result != editMenu)
+                {
+                    Console.Write($"\nThis number is out of range. Please enter a number from {min} to {max}: ");
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
         public static int GetInt(int numOfDigits)
         {
             while (true)
@@ -77,7 +94,7 @@ namespace Validator
                 int result = GetInt();
                 int count = result.ToString().Trim().Length;
 
-                if (count > numOfDigits)
+                if (count != numOfDigits)
                 {
                     Console.WriteLine($"Invalid input. Please only enter {numOfDigits} digits.");
                 }
@@ -132,12 +149,10 @@ namespace Validator
                 }
             }
         }
-        //Checks to make sure nothing isnt typed in
-        public static string GetString(double total)
+        public static string GetString()
         {
             while (true)
             {
-                Console.WriteLine($"Your total today is ${total}. Will you be paying with Cash, Card, or Check?");
                 string result = Console.ReadLine().ToLower().Trim();
 
                 if (result == null)
@@ -150,7 +165,6 @@ namespace Validator
                 }
             }
         }
-
         public static string GetString(string validInput)
         {
             while (true)
@@ -167,42 +181,6 @@ namespace Validator
                 }
             }
         }
-
-        public static int GetCheckNumber(int numOfDigits)
-        {
-            while (true)
-            {
-                int result = GetCheckNumber();
-                int count = result.ToString().Trim().Length;
-
-                if (count > numOfDigits + 2 || count < numOfDigits || result < 0)
-                {
-                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits}-{numOfDigits + 2} digits.");
-                }
-                else
-                {
-                    return result;
-                }
-            }
-        }
-
-        public static int GetCheckNumber()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.WriteLine("Please enter the check number");
-                    int result = int.Parse(Console.ReadLine());
-                    return result;
-                }
-                catch (FormatException e)
-                {
-                    Console.Write("That was not a number. Enter an integer: ");
-                }
-            }
-        }
-
         public static long GetCardNumber(int numOfDigits)
         {
             while (true)
@@ -228,7 +206,6 @@ namespace Validator
             {
                 try
                 {
-                    Console.WriteLine("Please enter the card number. ####-####-####-####");
                     string input = Console.ReadLine();
                     input = input.Replace("-", string.Empty);
                     cardNum = long.Parse(input);
@@ -267,74 +244,8 @@ namespace Validator
             {
                 try
                 {
-                    Console.WriteLine("Please enter the expirtaion date. ##/##/####");
                     string input = Console.ReadLine();
                     input = input.Replace("/", string.Empty);
-                    cardNum = int.Parse(input);
-                    return cardNum;
-
-                }
-                catch (FormatException e)
-                {
-                    Console.Write("That was not a number. Enter an integer: ");
-                }
-            }
-        }
-
-        //Reference back to payment class to the paying option
-        public static bool WhichPayment(string payment, double total)
-        {
-            bool result = true;
-            if (payment == "cash")
-            {
-                CafeDisco.Payment.PaymentWithCash(total);
-                result = false;
-            }
-            else if (payment == "card")
-            {
-                CafeDisco.Payment.PayWithCard(total);
-                result = false;
-            }
-            else if (payment == "check")
-            {
-                CafeDisco.Payment.PayWithCheck(total);
-                result = false;
-
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid input. Try again.\n");
-            }
-            return result;
-        }
-
-        public static int GetCVV(int numOfDigits)
-        {
-            while (true)
-            {
-                int result = GetCVV();
-                int count = result.ToString().Trim().Length;
-
-                if (count != numOfDigits || result < 0)
-                {
-                    Console.WriteLine($"Invalid input. Please only enter {numOfDigits} digits.");
-                }
-                else
-                {
-                    return result;
-                }
-            }
-        }
-
-        public static int GetCVV()
-        {
-            int cardNum = 0;
-            while (true)
-            {
-                try
-                {
-                    Console.WriteLine("Please enter the security number. ###");
-                    string input = Console.ReadLine();
                     cardNum = int.Parse(input);
                     return cardNum;
 
