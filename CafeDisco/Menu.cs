@@ -7,8 +7,8 @@ namespace CafeDisco
     class Menu
     {
         //property
-        public List<Item> DrinkMenu;
-        public List<Item> FoodMenu;
+        public List<Item> DrinkMenu { get; set; }
+        public List<Item> FoodMenu { get; set; }
 
         //constructor
         public Menu()
@@ -27,8 +27,6 @@ namespace CafeDisco
                 new Item("Reese Mocha", 4.95),
                 new Item("Peppermint Patty", 4.95),
                 new Item("Americano", 2.85),
-
-
             };
 
             FoodMenu = new List<Item>

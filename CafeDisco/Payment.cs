@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CafeDisco
-{
+{ 
     class Payment
     {
         //Properties
