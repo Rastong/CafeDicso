@@ -36,9 +36,6 @@ namespace CafeDisco
                 new Item("Parmesan Leek Pastry", 4.25),
                 new Item("The Godfather", 6.69),
             };
-            
         }
-
-
     }
 }

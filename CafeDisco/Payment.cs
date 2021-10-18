@@ -16,16 +16,16 @@ namespace CafeDisco
         }
 
         //Methods
-        public static void PayWithCard()
+        public static void PayWithCard(double total)
         {
-            int total = 0;
             long cardNum = Validator.Validator.GetCardNumber(16);
+            int ExpirationDate = Validator.Validator.GetExpirationDate(8);
+            int CVV = Validator.Validator.GetCVV(3);
             Console.WriteLine($"A total of ${total} has been charged to your account.");
         }
 
-        public static void PayWithCheck()
+        public static void PayWithCheck(double total)
         {
-            double total = 0;
             int checkNumber = Validator.Validator.GetCheckNumber(3);
             Console.WriteLine($"Thank you for the check {checkNumber} and total of ${total}.");
         }
@@ -59,5 +59,18 @@ namespace CafeDisco
             }
         }
 
+        //Finds out how they want to pay
+        public static string ToPay(double total)
+        {
+            string PaymentType = "";
+            bool ValidPaymentOption = true;
+            while (ValidPaymentOption)
+            {
+                //                   |Makes sure that it is a valid option| Makes sure they write something|
+                PaymentType = Validator.Validator.GetString(total);
+                ValidPaymentOption = Validator.Validator.WhichPayment(PaymentType, total);
+            }
+            return PaymentType;
+        }
     }
 }
