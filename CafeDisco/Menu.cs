@@ -40,8 +40,9 @@ namespace CafeDisco
 
             MainMenu = new List<string>
             {
-                ("Add or remove from cart"),
-                ("Checkout")
+                "Add or remove from cart",
+                "Checkout",
+                "View Cart"
             };
         }
        
