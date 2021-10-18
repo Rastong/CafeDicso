@@ -44,8 +44,9 @@ namespace CafeDisco
                 "Checkout",
                 "View Cart"
             };
+        }      
 
-        }
+    
         public void AddOrRemove()
         {
 

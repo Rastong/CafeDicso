@@ -8,19 +8,21 @@ namespace CafeDisco
         {
             
             Menu menu = new Menu();
-            bool newCustomer = true;
-            while (newCustomer == true)
+
+            bool newCustomerOrder = true;
+
+            while (newCustomerOrder == true)
             {
-
                 Cart myCart = new Cart();
-
                 Console.WriteLine("Welcome to Cafe Disco! Here is our menu.");
                 Console.WriteLine("DRINKS");
                 menu.DrinkMenu.ForEach(item => Console.WriteLine($"{item}"));
                 Console.WriteLine("\nFOOD");
                 menu.FoodMenu.ForEach(item => Console.WriteLine($"{item}"));
+
                 while (true)
                 {
+
                     //get main menu choice
                     int mainChoice = Options.GetMainChoice();
                     //add/remove choice
@@ -28,7 +30,6 @@ namespace CafeDisco
                     if (mainChoice == 1)
                     {
                         int addRemove = Options.AddOrRemove(menu);
-
 
                         if (addRemove == 1)
                         {
@@ -69,15 +70,18 @@ namespace CafeDisco
                         Console.WriteLine($"{"Your cart subtotal is",-35} ${myCart.GetSubTotal():0.00}");
                     }
 
+                    //secret options for admins
+                    //close software
+                    else if (mainChoice == 96)
+                    {
+                        Console.WriteLine("Shutting down PoS terminal. Great job today serving all of these grateful customers.");
+                        Environment.Exit(0);
+                    }
+
+                    //add or remove items from menu
                     else if (mainChoice == 99)
                     {
                         menu.AddOrRemove();
-                    }
-
-                    else if (mainChoice == 96)
-                    {
-                        Console.WriteLine("Shutting down PoS terminal. Great job today! beep boop.");
-                        Environment.Exit(0);
                     }
                 }
             }
