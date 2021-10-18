@@ -120,7 +120,6 @@ namespace Validator
 
                 if (answer == "n")
                 {
-                    Console.WriteLine("\nGoodbye!");
                     return false;
                 }
                 else if (answer == "y")

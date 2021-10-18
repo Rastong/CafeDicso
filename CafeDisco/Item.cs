@@ -15,5 +15,15 @@ namespace CafeDisco
             Name = name;
             Price = price;
         }
+        public Item (string name)
+        {
+            Name = name;
+        }
+
+
+        public override string ToString()
+        {
+            return string.Format("{0, -20}\t{1, -20:0.00}", Name, Price);
+        }
     }
 }

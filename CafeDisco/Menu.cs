@@ -9,6 +9,7 @@ namespace CafeDisco
         //property
         public List<Item> DrinkMenu { get; set; }
         public List<Item> FoodMenu { get; set; }
+        public List<string> MainMenu { get; set; }
 
         //constructor
         public Menu()
@@ -36,6 +37,16 @@ namespace CafeDisco
                 new Item("Parmesan Leek Pastry", 4.25),
                 new Item("The Godfather", 6.69),
             };
+
+            MainMenu = new List<string>
+            {
+                ("Add or remove from cart"),
+                ("Checkout")
+            };
         }
+       
+
+
+
     }
 }
