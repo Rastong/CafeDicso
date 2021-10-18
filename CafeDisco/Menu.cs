@@ -43,10 +43,61 @@ namespace CafeDisco
                 ("Add or remove from cart"),
                 ("Checkout")
             };
+
         }
-       
+        public void AddOrRemove()
+        {
+
+            Console.Write("Would you like to add an item to the list? (y/n): ");
+           
+            while (true)
+            {
+                string answer = Validator.Validator.GetString("y/n");
+
+                if (answer == "y")
+                {
+                    //food or drink
+                    int choice = Options.GetFoodOrDrink();
+                    Console.Write($"What is the name of item would you like to add?");
+                    string name = Validator.Validator.GetString("name");
+                    Console.Write("What is the price of the item you want to add?");
+                    double price = Validator.Validator.GetDouble(0, 10000000000);
+                    Item item = new Item(name, price);
+                    if (choice == 1)
+                    {
+                        FoodMenu.Add(item);
+                    }
+                    else if (choice == 2)
+                    {
+                        DrinkMenu.Add(item);
+                    }
 
 
 
+                    //for (int i = 0; i < list.Count; i++)
+                    //{
+                    //    //display list
+                    //    Console.WriteLine("{0}.{1}", i, list[i]);
+                    //}
+
+
+                    //Console.WriteLine();
+
+                    //Console.WriteLine("Choose from the list to remove an item: ");
+
+                    //answer = Console.ReadLine();
+                    //answer = answer.ToLower();
+
+
+
+
+
+
+                }
+            }
+        }
     }
 }
+
+
+
