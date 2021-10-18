@@ -46,14 +46,13 @@ namespace CafeDisco
 
                 else if (mainChoice == 2)
                 {
+
                     Console.Clear();
                     myCart.PrintCart();
                     Console.WriteLine($"\nThank you for shopping at Cafe Disco." + 
                         $"{"\nSubtotal: ",-35} ${myCart.GetSubTotal():0.00}" + 
                         $"{"\nTax: ",-35} ${myCart.GetTax():0.00}" + 
                         $"{"\nGrand Total: ",-35} ${myCart.GrandTotal():0.00}");
-
-                    //Payment bill = new Payment(total);
                     break;
                 }
 
