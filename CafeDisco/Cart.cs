@@ -58,7 +58,7 @@ namespace CafeDisco
         public void PrintCart()
         {
             int i = 1;
-            Console.WriteLine("\nYour cart currently includes: ");
+            Console.WriteLine("\nYour cart includes: ");
             customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name, -35} ${item.Price:0.00}"));
         }
 
