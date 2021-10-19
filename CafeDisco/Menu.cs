@@ -114,8 +114,8 @@ namespace CafeDisco
                         int itemChoice = Validator.Validator.GetInt(1, FoodMenu.Count);
 
                         //remove from cart and display item+price
-                        FoodMenu.Remove(FoodMenu[itemChoice - 1]);
                         Console.WriteLine($"{FoodMenu[itemChoice - 1].Name} is no longer on the menu.");
+                        FoodMenu.Remove(FoodMenu[itemChoice - 1]);
                     }
                 }
 
