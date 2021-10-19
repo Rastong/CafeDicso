@@ -58,8 +58,13 @@ namespace CafeDisco
         public void PrintCart()
         {
             int i = 1;
+<<<<<<< HEAD
             Console.WriteLine("\nYour cart currently includes: ");
             customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name,-35} ${item.Price:0.00}"));
+=======
+            Console.WriteLine("\nYour cart includes: ");
+            customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name, -35} ${item.Price:0.00}"));
+>>>>>>> 30e1fb5c7e4e76a915ed30cfc57ae8aaca074671
         }
 
         public double GetSubTotal()

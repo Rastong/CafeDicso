@@ -13,24 +13,31 @@ namespace CafeDisco
 
             while (newCustomerOrder == true)
             {
+                //start new cart for new customer
                 Cart myCart = new Cart();
-                Console.WriteLine("Welcome to Cafe Disco! Here is our menu.");
+                Console.WriteLine("Welcome to Cafe Disco! Peruse our menu below.");
+
+                //print menus
+                Console.WriteLine("___________________________________________________________\n");
                 Console.WriteLine("DRINKS");
-                menu.DrinkMenu.ForEach(item => Console.WriteLine($"{item}"));
-                Console.WriteLine("\nFOOD");
-                menu.FoodMenu.ForEach(item => Console.WriteLine($"{item}"));
+                Console.WriteLine("___________________________________________________________\n");
+                Options.GetBeverageMenu(menu.DrinkMenu);
+                Console.WriteLine("\n___________________________________________________________\n");
+                Console.WriteLine("FOOD");
+                Console.WriteLine("___________________________________________________________\n");
+                Options.GetFoodMenu(menu.FoodMenu);
 
                 while (true)
                 {
-
                     //get main menu choice
                     int mainChoice = Options.GetMainChoice();
+                    
                     //add/remove choice
-
                     if (mainChoice == 1)
                     {
                         int addRemove = Options.AddOrRemove(menu);
 
+                        //add to cart
                         if (addRemove == 1)
                         {
                             //food/drink choice
@@ -38,6 +45,8 @@ namespace CafeDisco
                             int itemChoice = Options.GetItem(foodOrDrink, menu);
                             myCart.AddToCart(foodOrDrink, itemChoice);
                         }
+
+                        //remove from cart
                         else
                         {
                             myCart.RemoveFromCart();
@@ -48,9 +57,11 @@ namespace CafeDisco
 
                         Console.Clear();
 
+                        //loop back to main choice
                         Console.WriteLine("\nThanks! Would you like to: ");
                     }
 
+                    //checkout
                     else if (mainChoice == 2)
                     {
                         Console.Clear();
@@ -76,6 +87,7 @@ namespace CafeDisco
                         break;
                     }
 
+                    //view cart
                     else if (mainChoice == 3)
                     {
                         Console.Clear();
@@ -84,7 +96,7 @@ namespace CafeDisco
                     }
 
                     //secret options for admins
-                    //close software
+                    //close software (CLOSE SHOP)
                     else if (mainChoice == 96)
                     {
                         Console.WriteLine("Shutting down PoS terminal. Great job today serving all of these grateful customers.");
@@ -94,6 +106,7 @@ namespace CafeDisco
                     //add or remove items from menu
                     else if (mainChoice == 99)
                     {
+                        //call on add or remove method
                         menu.AddOrRemove();
                     }
                 }

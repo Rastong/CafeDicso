@@ -68,16 +68,16 @@ namespace CafeDisco
             for (int i = 0; i < bevMenu.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {bevMenu[i]}");
+                Console.WriteLine($"\t{bevMenu[i].Descriptiion}");
             }
-            Console.WriteLine($"{bevMenu.Count + 1}. Go back.");
         }
         public static void GetFoodMenu(List<Item> foodMenu)
         {
             for (int i = 0; i < foodMenu.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {foodMenu[i]}");
+                Console.WriteLine($"\t{foodMenu[i].Descriptiion}");
             }
-            Console.WriteLine($"{foodMenu.Count + 1}. Go back.");
         }
 
     }
