@@ -47,14 +47,20 @@ namespace CafeDisco
         }
         public void AddOrRemove()
         {
+            Console.WriteLine("Welcome to the Admin options.");
 
-            Console.Write("Would you like to add an item to the list? (y/n): ");
-           
-            while (true)
+            bool repeat = true;
+
+            while (repeat)
             {
-                string answer = Validator.Validator.GetString("y/n");
+                //Get admin input
+                Console.Write("What would you like to do?\n" +
+                           "\n1. Add an item to menu" +
+                           "\n2. Remove an item from the menu" +
+                           "\n3. Cancel and return to main menu");
+                int answer = Validator.Validator.GetInt(1, 3);
 
-                if (answer == "y")
+                if (answer == 1)
                 {
                     //food or drink
                     int choice = Options.GetFoodOrDrink();
@@ -71,29 +77,41 @@ namespace CafeDisco
                     {
                         DrinkMenu.Add(item);
                     }
-
-
-
-                    //for (int i = 0; i < list.Count; i++)
-                    //{
-                    //    //display list
-                    //    Console.WriteLine("{0}.{1}", i, list[i]);
-                    //}
-
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Choose from the list to remove an item: ");
-
-                    //answer = Console.ReadLine();
-                    //answer = answer.ToLower();
-
-
-
-
-
-
                 }
+
+                //Removing Items
+                else if (answer == 2)
+                {
+                    int choice = Options.GetFoodOrDrink();
+
+                    if (choice == 1) //remove drink
+                    {
+                        Console.Write($"Which item would you like to remove? Enter a number 1 - {DrinkMenu.Count}: ");
+                        int itemChoice = Validator.Validator.GetInt(1, DrinkMenu.Count);
+
+                        //remove from cart and display item+price
+                        DrinkMenu.Remove(DrinkMenu[itemChoice - 1]);
+                        Console.WriteLine($"{DrinkMenu[itemChoice - 1].Name} is no longer on the menu.");
+                    }
+                    else if (choice == 2) //remove food
+                    {
+                        Console.Write($"Which item would you like to remove? Enter a number 1 - {FoodMenu.Count}: ");
+                        int itemChoice = Validator.Validator.GetInt(1, FoodMenu.Count);
+
+                        //remove from cart and display item+price
+                        FoodMenu.Remove(FoodMenu[itemChoice - 1]);
+                        Console.WriteLine($"{FoodMenu[itemChoice - 1].Name} is no longer on the menu.");
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Returning to main main.");
+                    break;
+                }
+
+                repeat = Validator.Validator.Repeat("Would you like to continue in admin mode?");
+
             }
         }
     }
