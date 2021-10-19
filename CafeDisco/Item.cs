@@ -6,27 +6,17 @@ namespace CafeDisco
 {
     class Item
     {
-<<<<<<< HEAD
-        public string Name;
-        public double Price;
-        
-        
-=======
         public string Name { get; set; }
-        public string Descriptiion { get; set; }
+        public string Description { get; set; }
         public double Price { get; set; }
->>>>>>> 30e1fb5c7e4e76a915ed30cfc57ae8aaca074671
 
 
         public Item(string name, string description, double price)
         {
             Name = name;
-<<<<<<< HEAD
             Price = price;            
-=======
-            Descriptiion = description;
+            Description = description;
             Price = price;
->>>>>>> 30e1fb5c7e4e76a915ed30cfc57ae8aaca074671
         }
         public Item (string name)
         {

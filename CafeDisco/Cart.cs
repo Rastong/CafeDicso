@@ -6,7 +6,7 @@ namespace CafeDisco
 {
     class Cart
     {
-        public Menu cafeMenu = new Menu();
+        //public Menu cafeMenu = new Menu();
         // List to hold all items customer purchases. Of class Menu and will hold items of Child class
         public List<Item> customerCart { get; set; }
 
@@ -17,18 +17,18 @@ namespace CafeDisco
 
         //methods
         // Add menu item to cart
-        public void AddToCart(int mainChoice, int itemChoice)
+        public void AddToCart(int mainChoice, int itemChoice, Menu menu)
         {
             //add to cart and display item+price
             if (mainChoice == 1)
             {
-                customerCart.Add(cafeMenu.DrinkMenu[itemChoice - 1]);
-                Console.WriteLine($"You have added {cafeMenu.DrinkMenu[itemChoice - 1].Name} to your cart for ${cafeMenu.DrinkMenu[itemChoice - 1].Price:0.00}");
+                customerCart.Add(menu.DrinkMenu[itemChoice - 1]);
+                Console.WriteLine($"You have added {menu.DrinkMenu[itemChoice - 1].Name} to your cart for ${menu.DrinkMenu[itemChoice - 1].Price:0.00}");
             }
             else
             {
-                customerCart.Add(cafeMenu.FoodMenu[itemChoice - 1]);
-                Console.WriteLine($"You have added {cafeMenu.FoodMenu[itemChoice - 1].Name} to your cart for ${cafeMenu.FoodMenu[itemChoice - 1].Price:0.00}");
+                customerCart.Add(menu.FoodMenu[itemChoice - 1]);
+                Console.WriteLine($"You have added {menu.FoodMenu[itemChoice - 1].Name} to your cart for ${menu.FoodMenu[itemChoice - 1].Price:0.00}");
             }
         }
 
@@ -58,13 +58,8 @@ namespace CafeDisco
         public void PrintCart()
         {
             int i = 1;
-<<<<<<< HEAD
-            Console.WriteLine("\nYour cart currently includes: ");
-            customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name,-35} ${item.Price:0.00}"));
-=======
             Console.WriteLine("\nYour cart includes: ");
             customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name, -35} ${item.Price:0.00}"));
->>>>>>> 30e1fb5c7e4e76a915ed30cfc57ae8aaca074671
         }
 
         public double GetSubTotal()
@@ -83,10 +78,6 @@ namespace CafeDisco
         public double GrandTotal()
         {
             return GetSubTotal() + GetTax();
-        }
-
-
-       
-
+        }   
     }
 }

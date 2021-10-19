@@ -68,7 +68,7 @@ namespace CafeDisco
             for (int i = 0; i < bevMenu.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {bevMenu[i]}");
-                Console.WriteLine($"\t{bevMenu[i].Descriptiion}");
+                Console.WriteLine($"\t{bevMenu[i].Description}");
             }
         }
         public static void GetFoodMenu(List<Item> foodMenu)
@@ -76,7 +76,7 @@ namespace CafeDisco
             for (int i = 0; i < foodMenu.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {foodMenu[i]}");
-                Console.WriteLine($"\t{foodMenu[i].Descriptiion}");
+                Console.WriteLine($"\t{foodMenu[i].Description}");
             }
         }
 

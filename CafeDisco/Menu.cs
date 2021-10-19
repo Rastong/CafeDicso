@@ -57,7 +57,8 @@ namespace CafeDisco
             while (repeat)
             {
                 //Get admin input
-                Console.Write("What would you like to do?\n" +
+                Console.Clear();
+                Console.WriteLine("What would you like to do?\n" +
                            "\n1. Add an item to menu" +
                            "\n2. Remove an item from the menu" +
                            "\n3. Cancel and return to main menu");
@@ -71,7 +72,7 @@ namespace CafeDisco
                     //get item properties - name, description, price
                     Console.Write($"What is the name of item would you like to add? ");
                     string name = Validator.Validator.GetString("a name");
-                    Console.Write("What is the description of the item you want to add?; ");
+                    Console.Write("What is the description of the item you want to add? ");
                     string description = Validator.Validator.GetString("a description");
                     Console.Write("What is the price of the item you want to add? ");
                     double price = Validator.Validator.GetDouble(0, 10000000000);
@@ -81,12 +82,14 @@ namespace CafeDisco
                     
                     if (choice == 1)
                     {
-                        FoodMenu.Add(item);
+                        DrinkMenu.Add(item);
                     }
                     else if (choice == 2)
                     {
-                        DrinkMenu.Add(item);
+                        FoodMenu.Add(item);
                     }
+
+                    Console.WriteLine($"You have successfully added {item.Name} to the menu.");
                 }
 
                 //Removing Items
@@ -100,8 +103,8 @@ namespace CafeDisco
                         int itemChoice = Validator.Validator.GetInt(1, DrinkMenu.Count);
 
                         //remove from cart and display item+price
-                        DrinkMenu.Remove(DrinkMenu[itemChoice - 1]);
                         Console.WriteLine($"{DrinkMenu[itemChoice - 1].Name} is no longer on the menu.");
+                        DrinkMenu.Remove(DrinkMenu[itemChoice - 1]);                       
                     }
                     else if (choice == 2) //remove food
                     {

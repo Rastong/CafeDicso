@@ -43,7 +43,7 @@ namespace CafeDisco
                             //food/drink choice
                             int foodOrDrink = Options.GetFoodOrDrink();
                             int itemChoice = Options.GetItem(foodOrDrink, menu);
-                            myCart.AddToCart(foodOrDrink, itemChoice);
+                            myCart.AddToCart(foodOrDrink, itemChoice, menu);
                         }
 
                         //remove from cart
@@ -66,10 +66,14 @@ namespace CafeDisco
                     {
                         Console.Clear();
                         myCart.PrintCart();
+
+                        //get tip
                         Console.WriteLine("\nIf you would like to add a tip, please enter a percentage amount from 0-100.");
                         double tip = Validator.Validator.GetDouble(0, 100);
                         Payment printTip = new Payment(tip);
                         double tipTotal = printTip.GetTip(tip, myCart);
+
+                        //display summary and totals
                         Console.WriteLine($"\nThank you for shopping at Cafe Disco." +
                             $"{"\nSubtotal: ",-35} ${myCart.GetSubTotal():0.00}" +
                             $"{"\nTax: ",-35} ${myCart.GetTax():0.00}" +
