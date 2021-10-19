@@ -99,6 +99,7 @@ namespace CafeDisco
 
                     if (choice == 1) //remove drink
                     {
+                        Options.GetBeverageMenu(DrinkMenu);
                         Console.Write($"Which item would you like to remove? Enter a number 1 - {DrinkMenu.Count}: ");
                         int itemChoice = Validator.Validator.GetInt(1, DrinkMenu.Count);
 
@@ -108,6 +109,7 @@ namespace CafeDisco
                     }
                     else if (choice == 2) //remove food
                     {
+                        Options.GetFoodMenu(FoodMenu);
                         Console.Write($"Which item would you like to remove? Enter a number 1 - {FoodMenu.Count}: ");
                         int itemChoice = Validator.Validator.GetInt(1, FoodMenu.Count);
 
