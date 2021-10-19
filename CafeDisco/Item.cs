@@ -6,13 +6,15 @@ namespace CafeDisco
 {
     class Item
     {
-        public string Name;
-        public double Price;
-        
+        public string Name { get; set; }
+        public string Descriptiion { get; set; }
+        public double Price { get; set; }
 
-        public Item(string name, double price)
+
+        public Item(string name, string description, double price)
         {
             Name = name;
+            Descriptiion = description;
             Price = price;
         }
         public Item (string name)
@@ -23,7 +25,7 @@ namespace CafeDisco
 
         public override string ToString()
         {
-            return string.Format("{0, -20}\t{1, -20:0.00}", Name, Price);
+            return string.Format($"{Name, -50} ${Price:0.00}");
         }
     }
 }
