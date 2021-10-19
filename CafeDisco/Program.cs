@@ -6,7 +6,7 @@ namespace CafeDisco
     {
         static void Main(string[] args)
         {
-            
+
             Menu menu = new Menu();
 
             bool newCustomerOrder = true;
@@ -64,13 +64,26 @@ namespace CafeDisco
                     //checkout
                     else if (mainChoice == 2)
                     {
-
                         Console.Clear();
                         myCart.PrintCart();
+                        Console.WriteLine("\nIf you would like to add a tip, please enter a percentage amount from 0-100.");
+                        double tip = Validator.Validator.GetDouble(0, 100);
+                        Payment printTip = new Payment(tip);
+                        double tipTotal = printTip.GetTip(tip, myCart);
                         Console.WriteLine($"\nThank you for shopping at Cafe Disco." +
                             $"{"\nSubtotal: ",-35} ${myCart.GetSubTotal():0.00}" +
                             $"{"\nTax: ",-35} ${myCart.GetTax():0.00}" +
-                            $"{"\nGrand Total: ",-35} ${myCart.GrandTotal():0.00}");
+                            $"{"\nTip: ",-35} ${tipTotal:0.00}" +
+                            $"{"\nGrand Total: ",-35} ${(myCart.GrandTotal() + tipTotal):0.00}");
+
+                        Payment total = new Payment(myCart.GrandTotal() + tipTotal);
+                        
+                        total.ToPay();
+                        Console.WriteLine("Thank you have a nice day!");
+                        Console.WriteLine("\nPress any key for new customer order.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Console.WriteLine("");
                         break;
                     }
 

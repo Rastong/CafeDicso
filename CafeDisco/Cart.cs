@@ -29,7 +29,7 @@ namespace CafeDisco
             {
                 customerCart.Add(cafeMenu.FoodMenu[itemChoice - 1]);
                 Console.WriteLine($"You have added {cafeMenu.FoodMenu[itemChoice - 1].Name} to your cart for ${cafeMenu.FoodMenu[itemChoice - 1].Price:0.00}");
-            }      
+            }
         }
 
         //remove menu item from cart
@@ -52,21 +52,26 @@ namespace CafeDisco
                 //remove from cart and display item+price
                 Console.WriteLine($"You have removed {customerCart[itemChoice - 1].Name} from your cart.");
                 customerCart.Remove(customerCart[itemChoice - 1]);
-            }   
+            }
         }
 
         public void PrintCart()
         {
             int i = 1;
+<<<<<<< HEAD
+            Console.WriteLine("\nYour cart currently includes: ");
+            customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name,-35} ${item.Price:0.00}"));
+=======
             Console.WriteLine("\nYour cart includes: ");
             customerCart.ForEach(item => Console.WriteLine($"{i++}. {item.Name, -35} ${item.Price:0.00}"));
+>>>>>>> 30e1fb5c7e4e76a915ed30cfc57ae8aaca074671
         }
 
         public double GetSubTotal()
         {
             double cartSum = 0;
             customerCart.ForEach(item => cartSum += item.Price);
-            
+
             return cartSum;
         }
 
@@ -79,5 +84,9 @@ namespace CafeDisco
         {
             return GetSubTotal() + GetTax();
         }
+
+
+       
+
     }
 }

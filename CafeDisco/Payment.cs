@@ -10,8 +10,10 @@ namespace CafeDisco
         //Constructor
         public Payment(double total)
         {
-            Total = total;
+            Total = Math.Round(total, 2);
         }
+      
+
 
         //Methods
         public void PayWithCard()
@@ -30,7 +32,6 @@ namespace CafeDisco
             int checkNumber = Validator.Validator.GetInt(3);
             Console.WriteLine($"Thank you for the check {checkNumber} and total of ${Total}.");
         }
-
         public void PaymentWithCash()
 
         {
@@ -58,7 +59,6 @@ namespace CafeDisco
                 Console.Write("That was not a number. Enter a number. ");
             }
         }
-
         //Finds out how they want to pay
         public string ToPay()
         {
@@ -72,7 +72,6 @@ namespace CafeDisco
             }
             return PaymentType;
         }
-
         //Checks to make sure nothing isnt typed in
         public string GetString()
         {
@@ -81,7 +80,6 @@ namespace CafeDisco
             return Validator.Validator.GetString();
 
         }
-
         //Reference back to payment class to the paying option
         public bool WhichPayment(string payment)
         {
@@ -108,6 +106,11 @@ namespace CafeDisco
             }
             return result;
         }
-
+        //gets tip percentage and calculates tip. Is called in program.cs to display on receipt. 
+        public double GetTip(double tip, Cart tipCart)
+        {
+            double tipAdd = (tip / 100) * (tipCart.GetSubTotal() + tipCart.GetTax());
+            return tipAdd;
+        }
     }
 }
