@@ -9,11 +9,12 @@ namespace CafeDisco
         public string Name;
         public double Price;
         
+        
 
         public Item(string name, double price)
         {
             Name = name;
-            Price = price;
+            Price = price;            
         }
         public Item (string name)
         {
